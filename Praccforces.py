@@ -1,18 +1,12 @@
 import discord
 import os 
-import asyncio
-from pymongo import MongoClient
-import random
 import time
-import datetime
-from discord.ext import commands , tasks
+from discord.ext import commands
 import requests 
-import json
-import sqlite3
 import hashlib
-import emoji
+
 from db import pracc_users , pracc_servers
-import DiscordUtils
+
 intents = discord.Intents.default()
 intents.members = True 
 intents.presences = True
@@ -20,18 +14,6 @@ intents.presences = True
 client = commands.Bot(command_prefix = "!" , intents = intents , case_insensitive = True)
 client.remove_command('help')
 
-
-
-
-
-
-
-
-
-
-    
-
-### old contests contests ###
 
 @client.command()
 async def list_servers(ctx):
@@ -59,8 +41,6 @@ async def reload(ctx,extension) :
         client.load_extension(f"cogs.{extension}")
 
 
-    
-
 @client.command()
 async def leaderboard(ctx): 
     #pracc_users.update_many({} , {"$set" : {"score" : 0}})
@@ -75,12 +55,9 @@ async def leaderboard(ctx):
     await ctx.send(embed = em)
 
 
-
 def hachapi(mtd):
     hached = hashlib.sha512(("praccc/"+mtd).encode()).hexdigest()
-    print(hached)
     return hached
-
 
 
 @client.command()
@@ -91,7 +68,6 @@ async def submit(ctx):
     contestId = "1256"
     apiSig = hachapi(f"contest.status?contestId={contestId}&handle={handle}&apikey={apikey}&count=1&time={time.time()}#{secret}")
     request = requests.get(f"https://codeforces.com/api/contest.status?contestId={contestId}&apikey={apikey}&count=1&handle={handle}&time={time.time()}&apiSig=praccc{apiSig}")
-    print(request.json())
 
 
 for filename in os.listdir('./cogs'): 

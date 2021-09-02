@@ -41,16 +41,16 @@ class Problemset(commands.Cog):
                     diff = args[0]
                     tag = ''
             if len(args) >= 2 :
-                b = False
-                i = 0
-                while(not b):
-                    b = args[i].isdecimal()
-                    i+=1
-                diff = arg[i-1]
-                args.pop(i-1)
-                tag=' '.join(args).strip()
+                try : 
+                    args[0] = int(args[0])
+                except ValueError :
+                    tag = args[0]
+                    diff = int(args[1]) 
+                else :
+                    diff = args[0]
+                    tag = args[1]
 
-
+            print(tag,diff)
             if f"{tag}" not in self.tags.replace(",","") and tag != "" : 
                 await ctx.send(f"Available tags :\n{self.tags}")   
                 ok = False
@@ -67,7 +67,7 @@ class Problemset(commands.Cog):
                         if abs(p["rating"] - diff) < 100 : 
                             probs.append(p)
                     except :
-                        continue
+                        pass
                 if probs : 
                     prob = random.choice(probs)
 
