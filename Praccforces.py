@@ -1,6 +1,5 @@
 import discord
 import os 
-from pymongo import MongoClient
 import time
 from discord.ext import commands
 import requests 
