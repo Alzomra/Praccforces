@@ -1,18 +1,13 @@
 import discord
 import os 
-import asyncio
 from pymongo import MongoClient
-import random
 import time
-import datetime
-from discord.ext import commands , tasks
+from discord.ext import commands
 import requests 
-import json
-import sqlite3
+
 import hashlib
-import emoji
 from db import pracc_users , pracc_servers
-import DiscordUtils
+
 intents = discord.Intents.default()
 intents.members = True 
 intents.presences = True
