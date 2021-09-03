@@ -3,9 +3,8 @@ import os
 import time
 from discord.ext import commands
 import requests 
-
 import hashlib
-from db import pracc_users , pracc_servers
+from db import pracc_users
 
 intents = discord.Intents.default()
 intents.members = True 
