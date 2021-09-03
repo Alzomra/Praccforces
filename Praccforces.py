@@ -9,7 +9,7 @@ from db import pracc_users
 intents = discord.Intents.default()
 intents.members = True 
 intents.presences = True
-# Working
+# Working with env
 
 client = commands.Bot(command_prefix = "!" , intents = intents , case_insensitive = True)
 client.remove_command('help')
