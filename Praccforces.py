@@ -11,7 +11,6 @@ intents.members = True
 intents.presences = True
 # Working with envs
 
-
 client = commands.Bot(command_prefix = "!" , intents = intents , case_insensitive = True)
 client.remove_command('help')
 
