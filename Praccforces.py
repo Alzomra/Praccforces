@@ -10,6 +10,7 @@ intents = discord.Intents.default()
 intents.members = True 
 intents.presences = True
 # Working with envs
+# YESSSSSS
 
 
 
