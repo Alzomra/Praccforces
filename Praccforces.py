@@ -9,7 +9,7 @@ from db import pracc_users
 intents = discord.Intents.default()
 intents.members = True 
 intents.presences = True
-# Working with envs HMMMMMMDsdafdadaddadadadadaadda
+# Working with envs HMMMMMMDsdafdadaddadadadadaaddadad
 
 
 
