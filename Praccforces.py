@@ -9,7 +9,7 @@ from db import pracc_users
 intents = discord.Intents.default()
 intents.members = True 
 intents.presences = True
-# Working with envs HMMMMMMDsdafdadaddadadadadaaddadadFAKdsdadadadaddadad WORKINGddddadadaddfddfd
+# Working with envs HMMMMMMDsdafdadaddadadadadaaddadadFAKdsdadadadaddadad WORKINGddddadadaddfddfdda
 
 
 client = commands.Bot(command_prefix = "!" , intents = intents , case_insensitive = True)
