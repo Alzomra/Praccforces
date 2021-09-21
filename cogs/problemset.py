@@ -1,4 +1,3 @@
-from typing import get_args
 import discord
 from discord.embeds import Embed
 from discord.ext import commands
@@ -6,6 +5,7 @@ import random
 import requests
 from db import pracc_users , pracc_servers
 from checks import check_user , check_guild
+
 
 def cleaned_args(args):
         diff = 0
