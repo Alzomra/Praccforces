@@ -37,7 +37,7 @@ class Contests(commands.Cog):
         em = discord.Embed(color = random.choice(colors))
         if int(div) < 4 and int(div) > 0 : 
             contests = requests.get(f"https://codeforces.com/api/contest.list?gym=false&apikey=2da07181f68098c7fb54b7e482a661e8ad4cb199&time={time.time()}&apiSig=zabbebe9f37bb129543a1e51cfdc346e06dfbdd0561f0123ecb121b44912d08636b8a227572200507125a19cbf8cd8a38c08147b2acb72a57f1f4862a3fdec08176a95")
-            diff = "Div. "+div
+            diff = "Div. "+str(div)
             valid = []
             for contest in contests.json()["result"]: 
                 if diff in contest["name"] : 
