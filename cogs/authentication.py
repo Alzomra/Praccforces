@@ -15,14 +15,11 @@ class Authentication(commands.Cog):
         if not args or args[0] == "help" : 
             em = discord.Embed(color = 0xF80A0A)
             em.title = "Account link help"
-            #em.description = "To link your Codeforces account you need to write a blog entry \n with the title 'PraccForces Authentication' : case insensitive \n MAKE SURE THAT 'ALLOW TO VIEW HISTROY' OPTION IS CHECKED !"
             em.description = "Steps : "
-            em.add_field(name = ":one:" , value = "Write a blog entry" , inline= False)
-            em.add_field(name = ":two:" , value = "Title the post 'Praccforces authentication'" , inline= False)
-            em.add_field(name = ":exclamation:" , value = "Make sure that  'ALLOW TO VIEW HISTROY' option is checked !" , inline= False)
-            em.add_field(name = ":three:"  , value = "Run the link command with your handle" , inline= False)
-            em.add_field(name = "The verification will expire when your post is more than 3 minutes old" , value =":exclamation:", inline= False)
-            em.add_field(name = "Blog entry link" , value = "http://codeforces.com/blog/entry/new/" , inline= False)
+            em.add_field(name = ":one:" , value = "Use !link 'YOUR_CODEFORCES_HANDLE'" , inline= False)
+            em.add_field(name = ":two:" , value = "Get your authentication key" , inline= False)
+            em.add_field(name = ":exclamation:" , value = "You can regenerate your key if lost" , inline= False)
+            em.add_field(name = ":three:"  , value = "Add your key as a comment to one of your recent public submissions to a problem" , inline= False)
             em.set_footer(text =f"Link command help for {ctx.author.name}" , icon_url=ctx.author.avatar_url)
             await ctx.send(embed = em)
         else :
