@@ -10,18 +10,15 @@ from checks import check_user , check_guild
 def cleaned_args(args):
         diff = 0
         args = list(args)
-        print(args)
         diffb = False
         new_args = []
         for arg in args : 
             try: 
                 arg = int(arg)
             except:
-                print("Not a number")
                 new_args.append(arg)
             else : 
                 if not diffb : 
-                    print("found IT" , arg)
                     diff = arg
                     diffb = True
         return new_args , diff
