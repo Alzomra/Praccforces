@@ -96,7 +96,6 @@ class Problemset(commands.Cog):
         if error == "Unvalid Tag" : 
             await ctx.send("Unvalid TAG , Use '!problem tags' to get the full list of Tags.")   
 
-#shitty
 
 
 
