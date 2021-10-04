@@ -93,6 +93,7 @@ async def submit(ctx):
 for filename in os.listdir('./cogs'): 
     if filename.endswith('.py') :  
         client.load_extension(f'cogs.{filename[:-3]}')
+        print("loaded",filename)
 
 
 #client.run("Nzk0OTAxMTU2ODkwNjczMTYy.X_BjZA.FZqLqB01WyZz5-c1elt0_vWNczg")

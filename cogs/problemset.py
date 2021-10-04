@@ -2,6 +2,9 @@ import discord
 from discord.embeds import Embed
 from discord.ext import commands
 import random
+import os
+from discord.ext.commands.cog import Cog
+from discord.ext.commands.errors import CommandError
 import requests
 from db import pracc_users , pracc_servers
 from checks import check_user , check_guild
@@ -96,9 +99,18 @@ class Problemset(commands.Cog):
         if error == "Unvalid Tag" : 
             await ctx.send("Unvalid TAG , Use '!problem tags' to get the full list of Tags.")   
 
-
-
-
+    @commands.command()
+    async def solution(self,ctx,arg):
+        if not arg : 
+            print('no args')
+        print(arg)
+        arg = arg.replace('.','').replace('/','').replace('\\','').replace('"','').replace("'",'').replace('*','').replace('$','')
+        arg = arg.upper()
+        print(arg)
+        if (not os.path.exists(f"D:\ACM\Codeforces Problemset\ProblemSet\{arg}.cpp")) : 
+            return
+        with open(f"D:\ACM\Codeforces Problemset\ProblemSet\{arg}.cpp") as f : 
+                    await ctx.send(f'```cpp\n{f.read()}```')
 
 def setup(client):
     client.add_cog(Problemset(client))
