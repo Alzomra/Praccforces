@@ -40,15 +40,28 @@ class Events(commands.Cog):
 
     @tasks.loop(minutes=300)
     async def stat_refresh(self):
-        users = pracc_users.find({})
+        pass
+        """   users = pracc_users.find({})
         for user in users:
             if user["handle"] : 
                 request = requests.get(f"https://codeforces.com/api/user.info?handles={user['handle']}")
                 score = request.json().get("result",[{"rating" : 0}])[0]["rating"]
-                pracc_users.update_one({"user_id" : user["user_id"]}, {"$set" : {"score" : score} })
+                pracc_users.update_one({"user_id" : user["user_id"]}, {"$set" : {"score" : score} }) 
+        """
         
 
-
+    @commands.Cog.listener()
+    async def on_member_join(self,member):
+        print('aaa')
+        if member.guild.id != 894591966501818428 :
+           return
+        guild = member.guild
+        role_name = "CP enthusiast"
+        role = discord.utils.get(guild.roles, name=role_name)
+        print(role)
+        if role :
+            await member.add_roles(role,reason=None,atomic=True)
+        
         
 
 
