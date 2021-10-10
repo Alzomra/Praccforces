@@ -9,7 +9,7 @@ class Events(commands.Cog):
     
     @commands.Cog.listener()
     async def on_ready(self):
-        await self.client.change_presence(activity=discord.Activity(type=discord.ActivityType.competing, name = "Codeforces"))
+        await self.client.change_presence(activity=discord.Activity(type=discord.ActivityType.competing, name = "!help"))
         self.stat_refresh.start()
         print("Ready to serve API")
 
