@@ -5,6 +5,10 @@ from discord.ext import commands
 import requests 
 import hashlib
 from db import pracc_users
+from dotenv import load_dotenv
+
+load_dotenv()
+
 
 intents = discord.Intents.default()
 intents.members = True 
@@ -95,9 +99,7 @@ for filename in os.listdir('./cogs'):
         client.load_extension(f'cogs.{filename[:-3]}')
         print("loaded",filename)
 
-
-#client.run("Nzk0OTAxMTU2ODkwNjczMTYy.X_BjZA.FZqLqB01WyZz5-c1elt0_vWNczg")
-client.run("NzE2ODkzODU3MjMyNDUzNjgy.XtSZeQ.U97RD_izy2G60kcGUr1COdnB878")
+client.run(os.environ.get('PRACC_TOKEN'))
 
 
 
