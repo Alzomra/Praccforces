@@ -34,7 +34,7 @@ class Problemset(commands.Cog):
                     ,'*special' ,'geometry' ,'bit masks' ,'two pointers','dsu', 'shortest paths', 
                     'probabilities','divide and conquer','hashing' ,'games' ,'flows' ,'interactive','matrices' 
                     ,'string suffix structures' ,'fft' ,'graph matchings' ,'ternary search', 
-                    'expression parsing' ,'meet-in-the-middle' , '2-sat', 'chinese', 'remainder theorem','schedules' ,'']
+                    'expression parsing' ,'meet-in-the-middle' , '2-sat', 'chinese remainder theorem','schedules' ,'']
     
     
 
