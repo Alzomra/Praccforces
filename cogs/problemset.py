@@ -14,7 +14,6 @@ from checks import check_user , check_guild
 def cleaned_args(args):
         diff = 0
         args = list(args)
-        print(args)
         diffb = False
         new_args = []
         for arg in args : 
