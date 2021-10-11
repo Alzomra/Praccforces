@@ -39,14 +39,14 @@ async def list_servers(ctx):
 
 
 
-@client.event
-async def on_command_error(ctx,error):
-        print(error)
-        if isinstance(error, commands.CommandNotFound):
-            pass
-        else : 
-            print(error)
-            await ctx.send('please check command arguments!')
+# @client.event
+# async def on_command_error(ctx,error):
+#         print(error)
+#         if isinstance(error, commands.CommandNotFound):
+#             pass
+#         else : 
+#             print(error)
+#             await ctx.send('please check command arguments!')
 
 
 
