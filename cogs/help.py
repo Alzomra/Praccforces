@@ -20,9 +20,9 @@ class Help(commands.Cog):
         em = discord.Embed(color = 0xFFFF00)
         em.set_thumbnail(url = "https://cdn.discordapp.com/avatars/794901156890673162/8de21d514c9f90fb9ed09de7d2f2be1c.png")
         em.title = "PraccForces has new & updated features!"
-        em.description = "Make sure lo link you CodeForces account to get features on the leaderboard !"
-        em.add_field(name ="**Added Leaderboards**" , value = "!leaderboard", inline=False)
-        em.add_field(name ='**CodeForces account link**' , value = "!link your_handle", inline=False)
+        em.description = "!problem command is reworked.\n I'ts 4x Faster and compound search terms are fixed !"
+        em.add_field(name ="**!example : **" , value = "!problem -dp -two pointers -2000", inline=False)
+        em.add_field(name ='**Result : **' , value = "A problem with the provided tags and rating.", inline=False)
         em.add_field(name ='**TOP.GG**' , value = "[top.gg/Praccforces](https://top.gg/bot/794901156890673162)", inline=False)
         for guild in self.client.guilds :
                 for channel in guild.text_channels :
