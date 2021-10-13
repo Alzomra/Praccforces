@@ -21,7 +21,8 @@ class Contests(commands.Cog):
         for contest in contests.json()["result"] : 
             if contest["startTimeSeconds"] > time.time() and "Div." in contest["name"] : 
                 available.append(contest)
-
+                
+        available.reverse()
         em = discord.Embed(color = 0x00FF00)
         em.title = "Upcoming Codeforces Contests"
         for contest in available : 
