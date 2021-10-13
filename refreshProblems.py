@@ -22,6 +22,6 @@ BASE_URL = "https://codeforces.com/problemset/problem/"
 
 
 tags = ['dp']
-problem = list(pracc_problems.find({"tags" : tags , "rating" : {"$gt" : 1200 }  }))
+problem = list(pracc_problems.find({"tags" : tags , "rating" : {"$gt" : 1200 } }))
 
 print(random.choice(problem))
