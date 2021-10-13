@@ -19,7 +19,7 @@ class Contests(commands.Cog):
         contests = requests.get(f"https://codeforces.com/api/contest.list?gym=false&apikey=2da07181f68098c7fb54b7e482a661e8ad4cb199&time={time.time()}&apiSig=zabbebe9f37bb129543a1e51cfdc346e06dfbdd0561f0123ecb121b44912d08636b8a227572200507125a19cbf8cd8a38c08147b2acb72a57f1f4862a3fdec08176a95")
         available = []
         for contest in contests.json()["result"] : 
-            if contest["startTimeSeconds"] > time.time() : 
+            if contest["startTimeSeconds"] > time.time() and "Div." in contest["name"] : 
                 available.append(contest)
 
         em = discord.Embed(color = 0x00FF00)
