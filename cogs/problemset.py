@@ -13,9 +13,8 @@ from checks import check_user , check_guild
 
 def cleaned_args(args):
         if (args == ''):
-            return ['']
+            return [''],0
         args = args.split('-')
-        print(args)
         diff = 0
         diffb = False
         new_args = []
@@ -49,7 +48,7 @@ class Problemset(commands.Cog):
         args  , diff = cleaned_args(args)
         tags = args
         if not args : 
-            tags = ''
+            tags = ['']
 
         if tags[0].lower() == "tags" : 
             em = discord.Embed(color = 0xFFFFFF)
@@ -59,23 +58,22 @@ class Problemset(commands.Cog):
             return
 
         for tag in tags :
-            print(tag , tag in self.tags)
             if tag not in self.tags : 
                 raise commands.CommandError(message="Unvalid Tag")
                 return 
-          
         colors = [0xF0EF17 , 0x11A6F9 , 0xF80A0A]
         tags.remove('')
         tags.sort()
-
-        problems = list(pracc_problems.find({"tags" : tags , "rating" : diff or {'$gt' : diff} }))
+        if tags == [] : 
+            problems = list(pracc_problems.find({"rating" : diff or {'$gt' : diff} }))
+        else : 
+            problems = list(pracc_problems.find({"tags" : tags , "rating" : diff or {'$gt' : diff} }))
 
         if not problems:
             problems = list(pracc_problems.find({"tags" : {"$all" : tags} , "rating" : diff or {'$gt' : diff} }))
             if not problems : 
                 raise commands.CommandError(message="No Problem Found")
                 return
-        print(problems)
         prob = random.choice(problems)
         em = discord.Embed(color = random.choice(colors))
         em.title = prob["name"]
