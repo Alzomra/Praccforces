@@ -41,10 +41,18 @@ class Contests(commands.Cog):
         await ctx.send(embed = em)
     
     @commands.command()
-    async def contest(self,ctx,div=4): 
+    async def contest(self,ctx,div=""): 
         await check_guild(ctx)
         await check_user(ctx.author)
         colors = [0xF0EF17 , 0x11A6F9 , 0xF80A0A]
+        try : 
+            div = int(div)
+        except :    
+            em = discord.Embed(color = 0xFF0000)
+            em.title = "Contest divisions can only be 1 , 2 , 3"
+            await ctx.send(embed = em) 
+            return
+
         if  not (int(div) < 4 and int(div) > 0) :
             em = discord.Embed(color = 0xFF0000)
             em.title = "Contest divisions can only be 1 , 2 , 3"
