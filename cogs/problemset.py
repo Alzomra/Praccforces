@@ -1,15 +1,11 @@
 import discord
-from discord import embeds
-from discord.embeds import Embed
 from discord.ext import commands
 import random
 import os
-from discord.ext.commands.cog import Cog
-from discord.ext.commands.errors import CommandError
-import requests
-from db import pracc_users , pracc_servers , pracc_problems
+from db import pracc_users ,  pracc_problems
 from checks import check_user , check_guild
 
+BASE_URL_PROBLEM = "https://codeforces.com/problemset/problem/"
 
 def cleaned_args(args):
         if (args == ''):
@@ -77,7 +73,7 @@ class Problemset(commands.Cog):
         prob = random.choice(problems)
         em = discord.Embed(color = random.choice(colors))
         em.title = prob["name"]
-        em.add_field(name = "Link :" , value = prob["link"], inline=False)
+        em.add_field(name = "Link :" , value = f"{BASE_URL_PROBLEM}{prob['contestId']}{prob['index']}", inline=False)
         em.add_field(name = "Rating" , value = prob["rating"], inline=False)
         if tag == "" :
             em.add_field(name = "Tags" , value="||" + "|| ||".join(prob["tags"]) + "||", inline=False)
