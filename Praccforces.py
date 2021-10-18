@@ -51,8 +51,6 @@ async def list_servers(ctx):
 
 
 
-# automatic server count
-
 @client.command()
 async def reload(ctx,extension) : 
         client.unload_extension(f"cogs.{extension}")

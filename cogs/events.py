@@ -1,7 +1,7 @@
 import discord
 from discord.ext import commands , tasks
 import requests
-from db import pracc_users
+from db import pracc_users , pracc_servers
 
 class Events(commands.Cog):
     def __init__(self,client):
@@ -10,7 +10,8 @@ class Events(commands.Cog):
     @commands.Cog.listener()
     async def on_ready(self):
         await self.client.change_presence(activity=discord.Activity(type=discord.ActivityType.competing, name = "!help"))
-        self.stat_refresh.start()
+        # self.fetch_new_contests.start()
+        # self.fetch_new_problems.start()
         print("Ready to serve API")
 
 
@@ -52,7 +53,6 @@ class Events(commands.Cog):
 
     @commands.Cog.listener()
     async def on_member_join(self,member):
-        print('aaa')
         if member.guild.id != 894591966501818428 :
            return
         guild = member.guild
@@ -62,8 +62,36 @@ class Events(commands.Cog):
         if role :
             await member.add_roles(role,reason=None,atomic=True)
         
-        
 
+    @commands.Cog.listener()
+    async def on_guild_join(self,guild):
+        guild = pracc_servers.find_one({"server_id" : guild.id})
+        if not guild :
+            pracc_servers.insert({"server_id" : guild.id, 
+                                "premium" : False,
+                                "region" : guild.region,
+                                "inactive" : True})
+            return
+
+        pracc_servers.update({"server_id" : guild.id}, 
+                              {"$set" : {"incative" : False}})
+        return
+
+
+    @commands.Cog.listener()
+    async def on_guild_remove(self,guild):
+        guild = pracc_servers.find_one({"server_id" : guild.id})
+        if guild : 
+            pracc_servers.update({"server_id" : guild.id}, 
+                                {"$set" : {"incative" : True}})
+            return
+        
+        pracc_servers.insert({"server_id" : guild.id, 
+                              "premium" : False,
+                              "region" : guild.region,
+                              "incative" : False})
+
+        
 
 
 
