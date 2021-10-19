@@ -24,7 +24,7 @@ BASE_URL = "https://codeforces.com/contest/"
 problem = list(pracc_problems.find({"tags" : tags , "rating" : {"$gt" : 1200 } }))
 """
 
-# contests = requests.get("https://codeforces.com/api/contest.list?gym=false").json()
+#contests = requests.get("https://codeforces.com/api/contest.list?gym=false").json()
 
 # for contest in contests["result"] :
 #     if "Div. " in contest['name'] : 
@@ -41,6 +41,36 @@ problem = list(pracc_problems.find({"tags" : tags , "rating" : {"$gt" : 1200 } }
 # for problem in problems: 
 #     print(problem)
 
+#### NOT RAN WITH GT
+
+with open("newprobs.txt" , "w") as file :
+    contests = pracc_contests.find({"id" : {"$lt" : 531 , "$gt" : 128}})
+    for contest in contests :
+        try  :
+            problems = requests.get(f"https://codeforces.com/api/contest.standings?contestId={contest['id']}").json()["result"]["problems"]
+        except : 
+            print(contest['id'] , "isfucked")
+        else : 
+            print("scanning" , contest['id'])
+            for problem in problems : 
+                exists = pracc_problems.find_one({"contestId" : contest['id'] , "index" : problem['index']})
+                if not exists : 
+                    try : 
+                        file.write(f"{problem['name']} , {problem['index']}")
+                    except : 
+                        file.write(f"{problem['index']}")
+                    if (not problem.get("rating" , None)) : 
+                        if(not problem.get("points" , None)) : 
+                            pracc_problems.insert_one({"name" : problem['name'] , "tags" : problem['tags'] , "contestId" : problem["contestId"], "index" : problem['index']})
+                        else : 
+                            pracc_problems.insert_one({"name" : problem['name'] , "rating" : problem['points'] , "tags" : problem['tags'] , "contestId" : problem["contestId"], "index" : problem['index']})
+                    else : 
+                        pracc_problems.insert_one({"name" : problem['name'] , "rating" : problem['rating'] , "tags" : problem['tags'] , "contestId" : problem["contestId"], "index" : problem['index'] })
+
+
+
+
+exit()
 
 contests = requests.get("https://codeforces.com/api/contest.list?gym=false").json()['result']
 
