@@ -73,7 +73,7 @@ class Problemset(commands.Cog):
         prob = random.choice(problems)
         em = discord.Embed(color = random.choice(colors))
         em.title = prob["name"]
-        em.add_field(name = "Link :" , value = f"{BASE_URL_PROBLEM}{prob['contestId']}{prob['index']}", inline=False)
+        em.add_field(name = "Link :" , value = f"{BASE_URL_PROBLEM}{prob['contestId']}/{prob['index']}/", inline=False)
         em.add_field(name = "Rating" , value = prob["rating"], inline=False)
         if tag == "" :
             em.add_field(name = "Tags" , value="||" + "|| ||".join(prob["tags"]) + "||", inline=False)
