@@ -80,8 +80,8 @@ class Events(commands.Cog):
 
     @commands.Cog.listener()
     async def on_guild_remove(self,guild):
-        guild = pracc_servers.find_one({"server_id" : guild.id})
-        if guild : 
+        praccguild = pracc_servers.find_one({"server_id" : guild.id})
+        if praccguild : 
             pracc_servers.update({"server_id" : guild.id}, 
                                 {"$set" : {"incative" : True}})
             return
