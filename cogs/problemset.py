@@ -88,8 +88,14 @@ class Problemset(commands.Cog):
         em.title = "Problem Error !"
         if str(error) == "Unvalid Tag" : 
             em.description = "Unvalid TAG , Use '!problem tags' to get the full list of Tags."
-        if str(error) == "No Problem Found" : 
+        elif str(error) == "No Problem Found" : 
             em.description = "No Problem Found with provided arguments , Use '!problem tags' to get the full list of Tags.\n try changing the rating or vary the tags"
+        else:
+            em.title = "Problem Invalid Syntax!"
+            em.description = """ Problem tags must be preceded with dashes (-)
+                               **Try the following syntax : !problem -[tag]**
+                                Example : **!problem -math -dp**""" 
+
         await ctx.send(embed = em) 
     
 
