@@ -26,7 +26,7 @@ class Tasks(commands.Cog):
             else :
                 if check['phase'] != contest['phase'] : 
                     pracc_contests.update({"id" : contest["id"]} , {"$set" : {"phase" : contest['phase']}}) 
-                else : 
+                if check['phase'] == contest['phase'] and check['phase'] == "FINISHED" : 
                     break
 
     @tasks.loop(seconds=3780)
