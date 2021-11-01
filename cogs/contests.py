@@ -14,29 +14,20 @@ class Contests(commands.Cog):
         self.client = client
     
     @commands.command()
-    async def contests(self,ctx,*args):
-        await check_guild(ctx)
-        await check_user(ctx.author)
+    async def contests(self,ctx,all = ""):
         em = discord.Embed(color = 0x00FF00)    
-        contests = requests.get(f"https://codeforces.com/api/contest.list?gym=false&apikey=2da07181f68098c7fb54b7e482a661e8ad4cb199&time={time.time()}&apiSig=zabbebe9f37bb129543a1e51cfdc346e06dfbdd0561f0123ecb121b44912d08636b8a227572200507125a19cbf8cd8a38c08147b2acb72a57f1f4862a3fdec08176a95")
-        available = []
-
-        if args : 
+        if not all :
+            contests = pracc_contests.find({"phase" : "BEFORE" , "name" : {"$regex" : "Div"}})
             em.title = "Upcoming Codeforces Contests (Rounds)"
-            for contest in contests.json()["result"] : 
-                if contest["startTimeSeconds"] > time.time() : 
-                    available.append(contest)
         else : 
+            contests = pracc_contests.find({"phase" : "BEFORE"})
             em.title = "All Upcoming Codeforces Contests"
-            for contest in contests.json()["result"] : 
-                if contest["startTimeSeconds"] > time.time() and "Div." in contest["name"] : 
-                    available.append(contest)
 
+        contests = list(contests)
+        contests.reverse()
 
-        available.reverse()
-        
-        for contest in available : 
-            em.add_field(name = contest["name"] , value = f"{str(datetime.timedelta(seconds = contest['startTimeSeconds'] - time.time()))[:-7]} Left for registration. **ID : {contest['id']}**" , inline=False)
+        for contest in contests :
+            em.add_field(name = contest["name"] , value = f"{str(datetime.timedelta(seconds = contest['startTime'] - time.time()))[:-7]}Left for registration. **ID : {contest['id']}**" , inline=False)
 
         await ctx.send(embed = em)
     
