@@ -11,7 +11,7 @@ BASE_URL_PROBLEM = "https://codeforces.com/problemset/problem/"
 
 def cleaned_args(args):
         if (args == ''):
-            return [''],0
+            return [''],0,False
         args = args.split('-')
         diff = 0
         wild = False
