@@ -65,8 +65,8 @@ class Events(commands.Cog):
 
     @commands.Cog.listener()
     async def on_guild_join(self,guild):
-        guild = pracc_servers.find_one({"server_id" : guild.id})
-        if not guild :
+        praccguild = pracc_servers.find_one({"server_id" : guild.id})
+        if not praccguild :
             pracc_servers.insert({"server_id" : guild.id, 
                                 "premium" : False,
                                 "region" : guild.region,
