@@ -13,7 +13,7 @@ class SlashedContests(Cog):
     def __init__(self, bot: Bot):
         self.bot = bot
 
-    @cog_ext.cog_slash(name="Contest" , description="Get a Contest with a specified division." , guild_ids=[712096475806564402] , options=[
+    @cog_ext.cog_slash(name="Contest" , description="Get a Contest with a specified division." , options=[
     manage_commands.create_option(name="division" , description="Contest division" , option_type=int , required=True , choices=[1,2,3])])
     async def contest(self, ctx: SlashContext , division):
         colors = [0xF0EF17 , 0x11A6F9 , 0xF80A0A]
@@ -29,7 +29,7 @@ class SlashedContests(Cog):
             em.add_field(name = f"{problem['name']}" , value = f"[Problem Link]({BASE_URL_PROBLEM}{problem['contestId']}/{problem['index']})", inline=True)
         await ctx.send(embed = em) 
 
-    @cog_ext.cog_slash(name="Contests" , description="Get upcoming codeforces contests" , guild_ids=[712096475806564402] , options=[
+    @cog_ext.cog_slash(name="Contests" , description="Get upcoming codeforces contests" , options=[
         manage_commands.create_option(name="all" ,description="Fetch all contests or codeforces rounds only." , required=False, option_type=bool)
     ])
     async def contests(self,ctx,all=False):

@@ -15,7 +15,7 @@ class SlashedProblems(Cog):
     def __init__(self, bot: Bot):
         self.bot = bot
 
-    @cog_ext.cog_slash(name="Problem" , description="Get a problem with a specified rating and tags." , guild_ids=[712096475806564402] , options=[
+    @cog_ext.cog_slash(name="Problem" , description="Get a problem with a specified rating and tags." , options=[
     manage_commands.create_option(name="rating" , description="Problem Rating" , option_type=int , required=False),
     manage_commands.create_option(name="tags" , description="Problem Tags" , option_type=str , required=False),
     manage_commands.create_option(name="wild" , description="Use wild tags" , option_type=bool , required=False),
