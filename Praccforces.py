@@ -6,7 +6,7 @@ import requests
 import hashlib
 from db import pracc_users
 from dotenv import load_dotenv
-
+from discord_slash import SlashCommand
 load_dotenv()
 
 
@@ -18,6 +18,8 @@ intents.members = True
 
 
 client = commands.Bot(command_prefix = "!" , intents = intents , case_insensitive = True)
+slash = SlashCommand(client , sync_commands=True)
+
 client.remove_command('help')
 
 
