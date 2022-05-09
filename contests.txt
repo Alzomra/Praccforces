@@ -9,7 +9,6 @@
 1601 , Codeforces Round #751 (Div. 1) , 1635143700 , BEFORE 
 1602 , Codeforces Round #751 (Div. 2) , 1635143700 , BEFORE 
 1582 , Codeforces Round #750 (Div. 2) , 1635071700 , BEFORE 
-
 1583 , Technocup 2022 - Elimination Round 1 , 1634468700 , FINISHED 
 1586 , Codeforces Round #749 (Div. 1 + Div. 2, based on Technocup 2022 Elimination Round 1) , 1634468700 , FINISHED 
 1595 , Технокубок 2022 - Ознакомительный Раунд 1 , 1634292300 , FINISHED 
