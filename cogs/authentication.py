@@ -56,16 +56,5 @@ class Authentication(commands.Cog):
         await ctx.send(embed = em)
 
 
-
-    
-
-
-
-
-
-
-
-
-
 def setup(client):
     client.add_cog(Authentication(client))
