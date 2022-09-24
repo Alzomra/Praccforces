@@ -2,3 +2,4 @@ __pycache__
 .env
 bfg-1.14.0.jar
 env
+refreshProblems.py

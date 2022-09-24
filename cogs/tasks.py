@@ -24,9 +24,9 @@ class Tasks(commands.Cog):
                 pracc_contests.insert_one({"id": contest['id'], "name": contest['name'], "phase": contest['phase'],
                                           "startTime": contest['startTimeSeconds'], "link": f"{BASE_URL_CONTEST}{contest['id']}"})
             else:
-                if check['phase'] != contest['phase']:
+                if contest['relativeTimeSeconds'] > 0:
                     pracc_contests.update_one({"id": contest["id"]}, {
-                                              "$set": {"phase": contest['phase']}})
+                                              "$set": {"phase": "FINISHED"}})
                 if check['phase'] == contest['phase'] and check['phase'] == "FINISHED":
                     break
 
