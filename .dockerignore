@@ -1,0 +1,10 @@
+# Ignore Python bytecode files
+*.pyc
+__pycache__/
+
+# Ignore local development files
+venv/
+*.env
+
+# Ignore version control system files
+.git/
