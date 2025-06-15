@@ -24,3 +24,11 @@ jobs:
         with:
           push: true
           tags: oussemaloukil/praccforces:latest
+          
+      - name: Build and Push ARM Image
+        uses: docker/build-push-action@v5
+        with:
+          context: .
+          platforms: linux/arm64
+          push: true
+          tags: oussemaloukil/praccforces:latest
